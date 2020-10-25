@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Product CRUD</title>
+    </h:head>
+    <style>
+        body {
+	margin:0;
+	padding:0;
+	background-color:#F6F4F5;
+	font-family:'Arial';
+}
+.sidenav {
+	height:100%;
+	width:160px;
+	position:fixed;
+	z-index:1;
+	top:0;
+	left:0;
+	background-color:#4B3B47;
+	overflow-x:hidden;
+	padding-top:20px;
+}
+.sidelink {
+	padding:6px 8px 6px 16px;
+	text-decoration:none;
+	font-size:25px;
+	color:#9C9990;
+	display:block;
+}
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+.main {
+	margin-top:25px;
+	margin-left:180px;
+	/* Same as the width of the sidenav */
+	font-size:15px;
+	/* Increased text to enable scrolling */
+	padding:0px 10px;
+}
+@media screen and (max-height:450px) {
+	.sidenav {
+		padding-top:15px;
+	}
+	.sidenav a {
+		font-size:18px;
+	}
+}
+.topnav {
+	margin-left:160px;
+	overflow:hidden;
+	background-color:#6A6262;
+}
+.topnav a {
+	float:left;
+	color:#9C9990;
+	text-align:center;
+	padding:14px 16px;
+	text-decoration:none;
+	font-size:17px;
+}
+.topnav a:hover {
+	background-color:#9C9990;
+	color:#f1f1f1;
+}
+.topnav a.active {
+	background-color:#9C9990;
+	color:#f1f1f1;
+}
+.tables {
+	font-family:arial,sans-serif;
+	border-collapse:collapse;
+	width:100%;
+}
+.tc,.thead {
+	border:1px solid #dddddd;
+	text-align:left;
+	padding: 8px;
+}
+.inputText {
+        width: 340px;  
+        height: 30px;  
+        border: none;  
+        border-radius: 3px;
+}
+.but{  
+    width: 350px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px; 
+    color: #4B3B47;  
+}
+h2{   
+    color: #6A6262;  
+    padding: 20px;  
+} 
+    </style>    
+    <h:body>
+        <div class="sidenav">
+        <h:form>
+            <h:commandLink class="sidelink" value="Products" action="#{products.home()}"/>
+        </h:form>
+        <h:form>
+            <h:commandLink class="sidelink" value="Party" action="#{party.home()}"/>
+        </h:form>
+        <h:form>
+            <h:commandLink class="sidelink" value="Transaction" action="#{trans.home()}"/>
+        </h:form>
+        </div>
+        
+        <div class="topnav">
+        <h:form>
+            <h:commandLink class="active" value="Product CRUD" action="#{products.crud()}"/>
+        </h:form>
+        </div>
+        
+        <div class="main">
+        <h2>Product CRUD</h2>
+        <h:form>
+        <h:inputText class="inputText" value="#{products.id}" a:placeholder="ID"/><br/>
+        <h:commandButton class="but" value="Search" action="#{products.getById()}"/>
+        <hr/>
+        <h:outputText value="Product Name"/><br/>
+        <h:inputText class="inputText" value="#{products.name}" a:placeholder="Product Name"/><br/><br/>
+        <h:outputText value="Size"/><br/>
+        <h:inputText class="inputText" value="#{products.size}" a:placeholder="Size"/><br/><br/>
+        <h:outputText value="Label"/><br/>
+        <h:inputText class="inputText" value="#{products.label}" a:placeholder="Label"/><br/><br/>
+        <h:outputText value="Type"/><br/>
+        <h:selectOneListbox class="inputText" size="1" a:placeholder="Type" value="#{products.type}">
+                    <f:selectItem itemLabel="Jacket" itemValue="Jacket"/>
+                    <f:selectItem itemLabel="Shirt" itemValue="Shirt"/>
+                    <f:selectItem itemLabel="Pants" itemValue="Pants"/>
+                    <f:selectItem itemLabel="Shoes" itemValue="Shoes"/>
+        </h:selectOneListbox><br/><br/>
+        <h:outputText value="Stock"/><br/>
+        <h:inputText class="inputText" value="#{products.stock}"/><br/><br/>
+        <h:outputText value="Received"/><br/>
+        <h:inputText class="inputText" value="#{products.received}"/><br/><br/>
+        <h:outputText value="Shipped"/><br/>
+        <h:inputText class="inputText" value="#{products.shipped}"/><br/><br/>
+        <h:outputText value="Note"/><br/>
+        <h:inputText class="inputText" value="#{products.note}" a:placeholder="Note"/><br/><br/>
+        <h:commandButton class="but" value="Add" action="#{products.add()}"/><br/><br/>
+        <h:commandButton class="but" value="Edit" action="#{products.edit()}"/><br/><br/>
+        <h:commandButton class="but" value="Delete" action="#{products.delete()}"/><br/><br/>
+        </h:form>
+        </div>
+    </h:body>
+</html>
+

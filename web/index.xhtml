@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Login</title>
+    </h:head>
+    <style>
+        body  {  
+            margin: 0;  
+            padding: 0;  
+            background-color:#F6F4F5;  
+            font-family: 'Arial';  
+        }  
+.login{  
+        width: 360px;  
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 450px;  
+        padding: 80px;  
+        background: #4B3B47;  
+        border-radius: 15px ;  
+          
+}  
+h2{  
+    text-align: center;  
+    color: #6A6262;  
+    padding: 20px;  
+}  
+.lab{  
+    color: #9C9990;  
+    font-size: 17px;  
+}  
+.uname{  
+    width: 340px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}  
+.pass{  
+    width: 340px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+      
+}  
+.log{  
+    width: 350px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: #4B3B47;  
+}  
+    </style>
+    <h:body>
+        <h:form>
+            <h2>Admin Login</h2><br/>
+            <div class="login">
+            <h:outputText value="Username" class="lab"/> <h:inputText value="#{admin.username}" class="uname"/><br/>
+            <h:outputText value="Password" class="lab"/><h:inputSecret value="#{admin.password}" class="pass"/><br/><br/>
+            <h:commandButton value="Login" action="#{admin.login()}" class="log"/>
+            </div>
+        </h:form>
+    </h:body>
+</html>
+

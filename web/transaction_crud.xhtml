@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:t="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Transaction CRUD</title>
+    </h:head>
+    <style>
+        body {
+	margin:0;
+	padding:0;
+	background-color:#F6F4F5;
+	font-family:'Arial';
+}
+.sidenav {
+	height:100%;
+	width:160px;
+	position:fixed;
+	z-index:1;
+	top:0;
+	left:0;
+	background-color:#4B3B47;
+	overflow-x:hidden;
+	padding-top:20px;
+}
+.sidelink {
+	padding:6px 8px 6px 16px;
+	text-decoration:none;
+	font-size:25px;
+	color:#9C9990;
+	display:block;
+}
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+.main {
+	margin-top:25px;
+	margin-left:180px;
+	/* Same as the width of the sidenav */
+	font-size:15px;
+	/* Increased text to enable scrolling */
+	padding:0px 10px;
+}
+@media screen and (max-height:450px) {
+	.sidenav {
+		padding-top:15px;
+	}
+	.sidenav a {
+		font-size:18px;
+	}
+}
+.topnav {
+	margin-left:160px;
+	overflow:hidden;
+	background-color:#6A6262;
+}
+.topnav a {
+	float:left;
+	color:#9C9990;
+	text-align:center;
+	padding:14px 16px;
+	text-decoration:none;
+	font-size:17px;
+}
+.topnav a:hover {
+	background-color:#9C9990;
+	color:#f1f1f1;
+}
+.topnav a.active {
+	background-color:#9C9990;
+	color:#f1f1f1;
+}
+.tables {
+	font-family:arial,sans-serif;
+	border-collapse:collapse;
+	width:100%;
+}
+.tc,.thead {
+	border:1px solid #dddddd;
+	text-align:left;
+	padding: 8px;
+}
+.inputText {
+        width: 340px;  
+        height: 30px;  
+        border: none;  
+        border-radius: 3px;
+}
+.but{  
+    width: 350px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px; 
+    color: #4B3B47;  
+}
+h2{   
+    color: #6A6262;  
+    padding: 20px;  
+} 
+    </style>    
+    <h:body>
+        <div class="sidenav">
+        <h:form>
+            <h:commandLink class="sidelink" value="Products" action="#{products.home()}"/>
+        </h:form>
+        <h:form>
+            <h:commandLink class="sidelink" value="Party" action="#{party.home()}"/>
+        </h:form>
+        <h:form>
+            <h:commandLink class="sidelink" value="Transaction" action="#{trans.home()}"/>
+        </h:form>
+        </div>
+        
+        <div class="topnav">
+        <h:form>
+            <h:commandLink class="active" value="Transaction CRUD" action="#{trans.crud()}"/>
+        </h:form>
+        </div>
+        
+        <div class="main">
+        <h2>Transaction CRUD</h2>
+        <h:form>
+        <h:inputText class="inputText" value="#{trans.id}" a:placeholder="ID"/><br/>
+        <h:commandButton class="but" value="Search" action="#{trans.getById()}"/>
+        <hr/>
+        <h:outputText value="Party Name"/><br/>
+        <h:selectOneListbox class="inputText" size="1" a:placeholder="Party" value="#{trans.partyId}">
+            <c:forEach items="#{party.getAllRecords()}" var="party">
+                <f:selectItem itemLabel="#{party.name}" itemValue="#{party.id}" />
+            </c:forEach> 
+        </h:selectOneListbox><br/><br/>
+        <h:outputText value="Product Name"/><br/>
+        <h:selectOneListbox class="inputText" size="1" a:placeholder="Product" value="#{trans.productId}">
+            <c:forEach items="#{products.getAllRecords()}" var="product">
+                <f:selectItem itemLabel="#{product.name}" itemValue="#{product.id}" />
+            </c:forEach> 
+        </h:selectOneListbox><br/><br/>
+        <h:outputText value="Amount"/><br/>
+        <h:inputText class="inputText" value="#{trans.amount}" a:placeholder="Amount"/><br/><br/>
+        <h:outputText value="Date"/><br/>
+        <h:inputText class="inputText" t:type="date" value="#{trans.date}" a:placeholder="Date">
+            <f:convertDateTime pattern="yyyy-mm-dd"/>  
+        </h:inputText><br/><br/>
+        <h:outputText value="Type"/><br/>
+        <h:selectOneListbox class="inputText" size="1" a:placeholder="Type" value="#{trans.type}">
+            <f:selectItem itemLabel="Incoming" itemValue="Incoming"/>
+            <f:selectItem itemLabel="Outcoming" itemValue="Outcoming"/>
+        </h:selectOneListbox><br/><br/>
+        <h:commandButton class="but" value="Add" action="#{trans.add()}"/>
+        </h:form>
+        </div>
+    </h:body>
+</html>
+

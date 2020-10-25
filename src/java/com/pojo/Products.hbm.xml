@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 25, 2020 3:10:11 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.pojo.Products" table="products" catalog="fashion_inventory" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="200" not-null="true" />
+        </property>
+        <property name="size" type="string">
+            <column name="size" length="50" not-null="true" />
+        </property>
+        <property name="label" type="string">
+            <column name="label" length="200" not-null="true" />
+        </property>
+        <property name="type" type="string">
+            <column name="type" length="6" not-null="true" />
+        </property>
+        <property name="stock" type="int">
+            <column name="stock" not-null="true" />
+        </property>
+        <property name="received" type="int">
+            <column name="received" not-null="true" />
+        </property>
+        <property name="shipped" type="int">
+            <column name="shipped" not-null="true" />
+        </property>
+        <property name="note" type="string">
+            <column name="note" length="200" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
